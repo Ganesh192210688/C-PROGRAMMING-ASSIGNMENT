@@ -1,0 +1,198 @@
+1.#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_NAME_LENGTH 50
+
+typedef struct {
+    char *name;
+    int age;
+} Person;
+
+int main() {
+    Person *p = malloc(sizeof(Person)); // allocate memory for a Person struct
+    if (p == NULL) {
+        fprintf(stderr, "Error: unable to allocate memory.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    char name[MAX_NAME_LENGTH];
+    printf("Enter name: ");
+    fgets(name, MAX_NAME_LENGTH, stdin);
+
+    // remove trailing newline from input
+    size_t len = strlen(name);
+    if (len > 0 && name[len-1] == '\n') {
+        name[len-1] = '\0';
+    }
+
+    p->name = strdup(name); // allocate memory and copy name string into it
+    printf("Enter age: ");
+    scanf("%d", &(p->age));
+
+    printf("Name: %s\n", p->name);
+    printf("Age: %d\n", p->age);
+
+    free(p->name);
+    free(p);
+
+    return 0;
+}
+2. Output is chennai  6
+3. zoho 4000 sridhar
+4.The output of this end on the endianness of the machine it is running on.
+
+If the machine is little-endian, the output will be 130, as the value of the integer a will be stored in memory with its least significant byte first. The pointer ptr is then cast to a char* type, which points to the first byte of the integer a. Dereferencing *ptr then gives us the value of the first byte, which is 130 in this case.
+
+If the machine is big-endian, the output will be -126, as the value of the integer a will be 
+5. Hello world
+6.#include <stdio.h>
+
+struct Employee {
+    int eno;
+    char ename[20];
+    float salary;
+};
+
+int main() {
+    int n;
+    printf("Enter the number of employees: ");
+    scanf("%d", &n);
+    
+    struct Employee employees[n];
+    
+    for (int i = 0; i < n; i++) {
+        printf("Enter the details of employee %d:\n", i+1);
+        printf("Employee No.: ");
+        scanf("%d", &employees[i].eno);
+        printf("Employee Name: ");
+        scanf("%s", employees[i].ename);
+        printf("Employee Salary: ");
+        scanf("%f", &employees[i].salary);
+    }
+    
+    float max_salary = employees[0].salary;
+    int max_index = 0;
+    
+    for (int i = 1; i < n; i++) {
+        if (employees[i].salary > max_salary) {
+            max_salary = employees[i].salary;
+            max_index = i;
+        }
+    }
+    
+    printf("Details of the employee with the highest salary:\n");
+    printf("Employee No.: %d\n", employees[max_index].eno);
+    printf("Employee Name: %s\n", employees[max_index].ename);
+    printf("Employee Salary: %.2f\n", employees[max_index].salary);
+    
+    return 0;
+}
+7.#include <stdio.h>
+#include <stdlib.h>
+
+struct student {
+  char name[50];
+  int age;
+  float gpa;
+};
+
+int main() {
+  // Create a student struct and populate its fields
+  struct student s = {"John Doe", 21, 3.7};
+
+  // Create a pointer to the student struct
+  struct student *sptr = &s;
+
+  // Access the members of the struct using the arrow operator
+  printf("Student name: %s\n", sptr->name);
+  printf("Student age: %d\n", sptr->age);
+  printf("Student GPA: %.2f\n", sptr->gpa);
+
+  return 0;
+}
+8.#include <stdio.h>
+
+struct Student {
+    int id;
+    int grade;
+};
+
+int main() {
+    int n;
+    printf("Enter the number of students: ");
+    scanf("%d", &n);
+    struct Student students[n];
+    int num_A = 0, num_B = 0, num_C = 0, num_D = 0, num_F = 0;
+    for (int i = 0; i < n; i++) {
+        printf("Enter the student number and the grade (out of 100) for student %d: ", i+1);
+        scanf("%d %d", &students[i].id, &students[i].grade);
+        if (students[i].grade >= 90) {
+            num_A++;
+        } else if (students[i].grade >= 78) {
+            num_B++;
+        } else if (students[i].grade >= 65) {
+            num_C++;
+        } else if (students[i].grade >= 50) {
+            num_D++;
+        } else {
+            num_F++;
+        }
+    }
+    printf("Student grades:\n");
+    for (int i = 0; i < n; i++) {
+        printf("Student %d: %d (grade: %d)\n", i+1, students[i].id, students[i].grade);
+    }
+    printf("Grade distribution:\n");
+    printf("A: %d\n", num_A);
+    printf("B: %d\n", num_B);
+    printf("C: %d\n", num_C);
+    printf("D: %d\n", num_D);
+    printf("F: %d\n", num_F);
+    return 0;
+}
+9.#include <stdio.h>
+
+int findHCF(int num1, int num2);
+
+int main() {
+   int num1, num2, hcf;
+
+   printf("Enter two numbers: ");
+   scanf("%d %d", &num1, &num2);
+
+   hcf = findHCF(num1, num2);
+
+   printf("The HCF of %d and %d is %d\n", num1, num2, hcf);
+
+   return 0;
+}
+
+int findHCF(int num1, int num2) {
+   int i, hcf;
+
+   for (i = 1; i <= num1 && i <= num2; i++) {
+      if (num1 % i == 0 && num2 % i == 0) {
+         hcf = i;
+      }
+   }
+
+   return hcf;
+}
+10. #include <stdio.h>
+
+int main() {
+    char c;
+
+    printf("Enter a lower case letter: ");
+    scanf("%c", &c);
+
+    if (c >= 'a' && c <= 'z') {
+        c -= 32; // convert to upper case by subtracting 32 from ASCII value
+        printf("The upper case letter is %c\n", c);
+    } else {
+        printf("The entered character is not a lower case letter.\n");
+    }
+
+    return 0;
+}

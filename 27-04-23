@@ -1,0 +1,181 @@
+1.#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    double x, n, result;
+    int choice;
+
+    printf("Enter the value of x: ");
+    scanf("%lf", &x);
+
+    printf("Enter the value of n: ");
+    scanf("%lf", &n);
+
+    printf("Enter your choice:\n");
+    printf("1. Pow(x,n)\n");
+    printf("2. Add(x,n)\n");
+    printf("3. Sub(x,n)\n");
+    printf("4. Mul(x,n)\n");
+    printf("5. Div(x,n)\n");
+    scanf("%d", &choice);
+
+    switch (choice) {
+        case 1:
+            result = pow(x, n);
+            printf("Pow(%.2lf, %.2lf) = %.2lf\n", x, n, result);
+            break;
+        case 2:
+            result = x + n;
+            printf("Add(%.2lf, %.2lf) = %.2lf\n", x, n, result);
+            break;
+        case 3:
+            result = x - n;
+            printf("Sub(%.2lf, %.2lf) = %.2lf\n", x, n, result);
+            break;
+        case 4:
+            result = x * n;
+            printf("Mul(%.2lf, %.2lf) = %.2lf\n", x, n, result);
+            break;
+        case 5:
+            if (n != 0) {
+                result = x / n;
+                printf("Div(%.2lf, %.2lf) = %.2lf\n", x, n, result);
+            } else {
+                printf("Division by zero is not allowed\n");
+            }
+            break;
+        default:
+            printf("Invalid choice\n");
+    }
+
+    return 0;
+}
+2.#include <stdio.h>
+
+int main() {
+    int num, rev = 0, digit;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    // Reverse the digits of the number
+    while (num > 0) {
+        digit = num % 10;
+        rev = rev * 10 + digit;
+        num /= 10;
+    }
+
+    // Move the last digit to the first position and vice versa
+    int last_digit = rev % 10;
+    rev /= 10;
+    int first_digit = rev;
+    while (first_digit >= 10) {
+        first_digit /= 10;
+    }
+    int new_num = last_digit;
+    while (rev > 0) {
+        digit = rev % 10;
+        new_num = new_num * 10 + digit;
+        rev /= 10;
+    }
+    new_num = new_num * 10 + first_digit;
+
+    printf("Reverse Number: %d\n", new_num);
+
+    return 0;
+3.#include <stdio.h>
+
+int main() {
+    int n, fact = 1;
+
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+
+    if (n < 0) {
+        printf("Error: Factorial of a negative integer doesn't exist.\n");
+    }
+    else {
+        for (int i = 1; i <= n; i++) {
+            fact *= i;
+        }
+
+        printf("Factorial of %d is %d\n", n, fact);
+    }
+
+    return 0;
+}
+4 #include <stdio.h>
+
+int main() {
+   int num, sum=0;
+   
+   printf("Enter a number: ");
+   scanf("%d", &num);
+
+   for(int i=1; i<num; i++) {
+      if(num%i==0) {
+         sum += i;
+      }
+   }
+
+   if(sum == num) {
+      printf("It's a Perfect Number\n");
+   }
+   else {
+      printf("It's not a Perfect Number\n");
+   }
+
+   return 0;
+}
+5.#include <stdio.h>
+
+int main() {
+    double num, square, cube;
+
+    // prompt user to enter a decimal number
+    printf("Enter a decimal number: ");
+    scanf("%lf", &num);
+
+    // calculate square and cube using standard method
+    square = num * num;
+    cube = num * num * num;
+
+    // display results
+    printf("Square Number: %.3lf\n", square);
+    printf("Cube Number: %.3lf\n", cube);
+
+    return 0;
+}
+6.#include <stdio.h>
+
+int main() {
+   int age;
+
+   printf("Enter your age: ");
+   scanf("%d", &age);
+
+   if (age >= 18) {
+      printf("You are eligible to vote\n");
+   } else {
+      printf("You are not eligible to vote. You are allowed to vote after %d years\n", 18-age);
+   }
+
+   return 0;
+}
+7.#include <stdio.h>
+
+int main() {
+    int num;
+    
+    printf("Enter the number: ");
+    scanf("%d", &num);
+    
+    if (num % 2 == 0) {
+        printf("The given number is even\n");
+    } else {
+        printf("The given number is odd\n");
+    }
+    
+    return 0;
+}
